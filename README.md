@@ -47,7 +47,7 @@ http://wxfwtest.ylzms.com/ylzued/docs/rules/
 
 ### ```store```
 
-strore开启了命名空间，所有在页面分发时要带上模块名
+strore开启了命名空间，所以在页面分发时要带上模块名
 
 ```javascript
 ├─store
@@ -60,7 +60,7 @@ strore开启了命名空间，所有在页面分发时要带上模块名
 
 ### ```styles```
 
-样式使用scss预处理，全局样式变量统一放```params.css``文件夹
+样式使用scss预处理，全局样式变量统一放```params.css```文件夹
 
 ```javascript
 ├─styles
