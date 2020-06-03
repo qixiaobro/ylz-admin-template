@@ -2,6 +2,14 @@
 
 > 使用Vue.js+Element-ui+axios等技术栈搭建的后台管理系统模版。💯
 
+#安装方法
+
+```javascript
+npm i ylz-admin-template
+npm i
+npm run serve
+```
+
 ## 目录结构
 
 ```javascript
