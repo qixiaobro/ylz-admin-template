@@ -5,7 +5,7 @@
 #安装方法
 
 ```javascript
-npm i ylz-admin-template
+git clone git@github.com:qixiaobro/ylz-admin-template.git
 npm i
 npm run serve
 ```
