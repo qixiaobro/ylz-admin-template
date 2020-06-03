@@ -1,0 +1,50 @@
+src
+├─.DS_Store
+├─App.vue
+├─main.js
+├─views
+|   ├─login-module
+|   |      └login.vue
+|   ├─default-module
+|   |       └default-404.vue
+├─utils
+|   ├─file-to-base64.js
+|   ├─local-storage.js
+|   ├─session-storage.js
+|   ├─set-title.js
+|   └token.js
+├─themes
+|   ├─index.css
+|   ├─fonts
+|   |   ├─element-icons.ttf
+|   |   └element-icons.woff
+├─styles
+|   ├─params.scss
+|   └reset.scss
+├─store
+|   ├─index.js
+|   ├─mutation-types.js
+|   ├─modules
+|   |    ├─common.js
+|   |    └user.js
+├─router
+|   ├─after-each.js
+|   ├─before-each.js
+|   ├─index.js
+|   ├─login-module
+|   |      └index.js
+|   ├─default-module
+|   |       └index.js
+|   ├─common-module
+|   |       └index.js
+├─components
+├─assets
+|   ├─login_bg1.png
+|   └logo.png
+├─apis
+|  ├─http.js
+|  ├─index.js
+|  ├─modules
+|  |    ├─common.js
+|  |    ├─login.js
+|  |    └user.js

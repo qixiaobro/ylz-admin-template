@@ -1,171 +1,11 @@
-# ylz-admin-template
-
-> 使用Vue.js+Element-ui+axios等技术栈搭建的后台管理系统模版。💯
-
-## 目录结构
-
-```javascript
-src
-vue.config.js  //项目打包配置等
-.env.prod			 //生产环境全局变量
-.env.test      //测试环境全局变量
-├─App.vue      //入口文件
-├─main.js      //main.js
-├─views		     //页面文件夹
-├─utils		     //公共方法、函数工具
-├─themes	     //定制主题、现有一套医保平台的主题
-├─styles	     //样式文件
-├─store        //vuex仓库
-├─router       //路由文件
-├─components   //组件
-├─assets       //静态资源
-├─apis         //接口模块
-```
-
-## 代码规范
-
-文件夹命名、文件命名请参考以下链接文档
-
-[ylz前端代码规范]: http://wxfwtest.ylzms.com/ylzued/docs/rules/
-
-## 目录详情
-
-### ```router```
-
-```javascript
-├─router
-|   ├─after-each.js   //路由后置守卫
-|   ├─before-each.js  //路由前置守卫
-|   ├─index.js        //自动注册路由
-|   ├─login-module    //登录模块路由
-|   |      └index.js  
-|   ├─default-module  //默认页面路由，如404页面
-|   |       └index.js
-|   ├─common-module   //页面路由
-|   |       └index.js
-```
-
-### ```store```
-
-strore开启了命名空间，所有在页面分发时要带上模块名
-
-```javascript
-├─store
-|   ├─index.js			     //组装模块并导出store
-|   ├─mutation-types.js  //mutation类型文件，所有mutation使用变量
-|   ├─modules            //仓库模块文件夹
-|   |    ├─common.js		 //公共state
-|   |    └user.js				 //用户state
-```
-
-### ```styles```
-
-样式使用scss预处理，全局样式变量统一放```params.css``文件夹
-
-```javascript
-├─styles
-|   ├─params.scss      //颜色、font-size、边框色等全局样式变量文件
-|   └reset.scss	       //重置浏览器样式文件
-```
-
-```themes```
-
-```Element-UI```定制主题文件夹，在它的官网定制项目一些主题，可以避免在开发过程中频繁修改```Element-UI```的样式，下载完后在```main.js```中引入
-
-```javascript
-├─themes
-|   ├─index.css
-|   ├─fonts
-|   |   ├─element-icons.ttf
-|   |   └element-icons.woff
-```
-
-### ```apis```
-
-```apis```文件夹包含封装的```axios```=>```http``` ,以及不同模块的接口
-
-```javascript
-├─apis
-|  ├─http.js          //axios 封装
-|  ├─index.js         //导出所有api模块
-|  ├─modules					//接口模块文件夹
-|  |    ├─common.js   //公共接口
-|  |    ├─login.js    //登录接口
-|  |    └user.js      //用户接口
-```
-
-### ```views```
-
-```views```包含·所有页面文件，不同模块页面放不同文件夹
-
-```javascript
-├─views
-|   ├─login-module          //登录模块页面
-|   |      └login.vue
-|   ├─default-module        //默认页面
-|   |       └default-404.vue
-```
-
-### ```utils```
-
-```utils```包含封装的公共方法、工具函数等
-
-```javascript
-├─utils
-|   ├─file-to-base64.js     //文件转base64
-|   ├─local-storage.js      //操作localStorage
-|   ├─session-storage.js    //操作sessionStorage
-|   ├─set-title.js          //设置浏览器标题
-|   └token.js								//操作token
-```
-
-.env.prod
-
-```javascript
-BASE_URL = ""
-TOKEN = "accessToken"
-TIMEOUT = 5000
-NODE_ENV = "production"
-```
-
-.env.test
-
-```javascript
-BASE_URL = ""
-TOKEN = "accessToken"
-TIMEOUT = 5000
-NODE_ENV = "develoption"
-```
-
-### ```main.js```
-
-```javascript
-import App from '@/App.vue'
-import store from '@/store'
-import router from '@/router'
-import { beforeEachCheckToken } from "@/router/before-each"
-import { afterEachSetTitle } from "@/router/after-each"
-
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import '@/themes/index.css' //element-ui医保定制主题,如不需要注释即可
-Vue.use(ElementUI);
-
-Vue.config.productionTip = false
-
-router.beforeEach(beforeEachCheckToken)//路由前置守卫
-router.afterEach(afterEachSetTitle)//路由后置守卫
-
-new Vue({
-  store,
-  router,
-  render: h => h(App),
-}).$mount('#app')
-```
-
-### ```vue.config.js```
-
-```javascript
+/*
+ * @Author       : zhuxiaodong
+ * @Date         : 2020-06-01 18:22:57
+ * @LastEditTime : 2020-06-02 17:03:54
+ * @LastEditors  : zhuxiaodong
+ * @Description  : vue.config.js
+ * @FilePath     : /ylz-admin-template/vue.config.js
+ */ 
 const path = require("path")
 const CompressionWebpackPlugin = require("compression-webpack-plugin")
 
@@ -188,11 +28,11 @@ module.exports = {
     disableHostCheck: true,
     proxy: { //配置跨域
       "/api": {
-        target: "http:www.baidu.com",
+        target: "http://fuwu-test.nhsa.gov.cn/ebus/fuwu/api/oplt",
         secure: false,
         changOrigin: true,
         // pathRewrite: {
-        //   "^/api": ""
+        //   "^/hsa-pss-oplt-nation": ""
         // }
       }
     }
@@ -344,11 +184,3 @@ module.exports = {
   pluginOptions: {}
 }
 
-
-```
-
-## 最后
-
-更多详情请查看源文件。
-
-模版和文档不断完善中，后续会将常用的组件、方法引入。❤️🚀😉

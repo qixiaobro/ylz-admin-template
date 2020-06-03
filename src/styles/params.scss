@@ -1,0 +1,57 @@
+/*
+ * @Author       : zhuxiaodong
+ * @Date         : 2020-06-01 21:55:02
+ * @LastEditTime : 2020-06-01 22:11:57
+ * @LastEditors  : zhuxiaodong
+ * @Description  : 颜色、字体、间距等常量
+ * @FilePath     : /ylz-admin-template/src/styles/params.scss
+ */
+
+//主色
+$primary: #1b65b9;
+$primary2: #3b71e8;
+$primary3: #285bcc;
+$primary4: #d9e5ff;
+
+//辅助色
+$success: #1ba64f;
+$success2: #28c663;
+$success3: #dff7e8;
+
+$error: #db4d4d;
+$error2: #f56c6c;
+$error3: #fff1f1;
+
+$warning: #e6a23c;
+$warning2: #feb70f;
+$warning3: #fff7ed;
+
+//文本色
+$fontColor: #303133;
+$fontColor2: #606266;
+$fontColor3: #909399;
+$fontColor4: #c0c4cc;
+
+//边框色
+$borderColor: #e0e1e6;
+$borderColor2: #cecece;
+
+//背景色
+$bgColor: #f5f7fa;
+$bgColor2: #f5f6f6;
+
+//文本样式
+//特殊大标题
+$fontSize1: 24px;
+//特殊标题
+$fontSize2: 22px;
+//板块标题/较为重要
+$fontSize3: 18px;
+//小标题
+$fontSize4: 16px;
+//段落文字
+$fontSize5: 14px;
+//辅助文字
+$fontSize6: 12px;
+//少数辅助文字
+$fontSize7: 10px;
