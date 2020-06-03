@@ -2,7 +2,7 @@
 
 > 使用Vue.js+Element-ui+axios等技术栈搭建的后台管理系统模版。💯
 
-#安装方法
+# 安装方法
 
 ```javascript
 git clone git@github.com:qixiaobro/ylz-admin-template.git
