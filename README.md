@@ -55,7 +55,7 @@ http://wxfwtest.ylzms.com/ylzued/docs/rules/
 
 ### ```store```
 
-strore开启了命名空间，所以在页面分发时要带上模块名
+store开启了命名空间，所以在页面分发时要带上模块名
 
 ```javascript
 ├─store
