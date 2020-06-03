@@ -26,7 +26,7 @@ vue.config.js  //项目打包配置等
 
 文件夹命名、文件命名请参考以下链接文档
 
-[ylz前端代码规范]: http://wxfwtest.ylzms.com/ylzued/docs/rules/
+[ylz前端代码规范]: (http://wxfwtest.ylzms.com/ylzued/docs/rules/)
 
 ## 目录详情
 
