@@ -5,13 +5,15 @@
     "serve": "vue-cli-service serve",
     "build:test": "vue-cli-service build --mode test",
     "build:prod": "vue-cli-service build --mode prod",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "mock": "nodemon ./src/mocks/index"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "js-cookie": "^2.2.1",
+    "mockjs": "^1.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.3.2",
     "vuex": "^3.4.0"
@@ -24,7 +26,9 @@
     "compression-webpack-plugin": "^4.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "express": "^4.17.1",
     "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },

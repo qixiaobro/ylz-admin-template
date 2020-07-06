@@ -1,14 +1,14 @@
 <!--
  * @Author       : zhuxiaodong
  * @Date         : 2020-06-02 13:44:50
- * @LastEditTime : 2020-06-02 17:20:16
+ * @LastEditTime : 2020-07-06 15:17:05
  * @LastEditors  : zhuxiaodong
  * @Description  : login
- * @FilePath     : /ylz-admin-template/src/views/login-module/login.vue
---> 
+ * @FilePath     : /easy-mock-demo/src/views/login-module/login.vue
+-->
 <template>
   <div class="login-container">
-    <img  class="bg-box" />
+    <img class="bg-box" />
     <div class="login-box">
       <el-row>
         <el-col :span="12" class="title-box">
@@ -29,9 +29,9 @@
             >
               <el-form-item prop="acct">
                 <el-input
-                  :class="[userBlur?'input-el-box-focus':'input-el-box']"
-                  @focus="changeIcon('userBlur',true)"
-                  @blur="changeIcon('userBlur',false)"
+                  :class="[userBlur ? 'input-el-box-focus' : 'input-el-box']"
+                  @focus="changeIcon('userBlur', true)"
+                  @blur="changeIcon('userBlur', false)"
                   @keyup.enter.native="handleLogin"
                   placeholder="请输入账号"
                   auto-complete="true"
@@ -42,9 +42,9 @@
               </el-form-item>
               <el-form-item prop="pwd">
                 <el-input
-                  :class="[pwdBlur?'input-el-box-focus':'input-el-box']"
-                  @focus="changeIcon('pwdBlur',true)"
-                  @blur="changeIcon('pwdBlur',false)"
+                  :class="[pwdBlur ? 'input-el-box-focus' : 'input-el-box']"
+                  @focus="changeIcon('pwdBlur', true)"
+                  @blur="changeIcon('pwdBlur', false)"
                   placeholder="请输入密码"
                   auto-complete="true"
                   type="password"
@@ -56,18 +56,24 @@
               </el-form-item>
               <el-form-item prop="codeVerify">
                 <el-input
-                  :class="[imgCodeBlur?'input-el-box-focus':'input-el-box']"
+                  :class="[imgCodeBlur ? 'input-el-box-focus' : 'input-el-box']"
                   style="width:200px;float:left;display:inline-block;box-sizing:border-box"
-                  @focus="changeIcon('imgCodeBlur',true)"
-                  @blur="changeIcon('imgCodeBlur',false)"
+                  @focus="changeIcon('imgCodeBlur', true)"
+                  @blur="changeIcon('imgCodeBlur', false)"
                   placeholder="请输入验证码"
                   v-model="loginForm.codeVerify"
                   @keyup.enter.native="handleLogin"
                   clearable
                 >
                 </el-input>
-                <div style="width:100px;display:inline-block;float:left;height:40px;cursor:pointer">
-                  <img :src="imgCode" style="width:100%;height:100%" @click="getCodeImg()" />
+                <div
+                  style="width:100px;display:inline-block;float:left;height:40px;cursor:pointer"
+                >
+                  <img
+                    :src="imgCode"
+                    style="width:100%;height:100%"
+                    @click="getCodeImg()"
+                  />
                 </div>
               </el-form-item>
               <!-- <el-form-item>
@@ -81,7 +87,8 @@
                   style="width:100%;background:#1b65b9;color:#fff"
                   :loading="loading"
                   @click="handleLogin"
-                >登录</el-button>
+                  >登录</el-button
+                >
               </el-form-item>
             </el-form>
           </div>
@@ -92,7 +99,7 @@
 </template>
 
 <script>
-import { login } from "@/apis";
+import { login,user } from "@/apis";
 import { setToken } from "@/utils/token";
 // import { sha256 } from "js-sha256";
 export default {
@@ -106,19 +113,19 @@ export default {
       loginForm: {
         acct: "",
         pwd: "",
-        codeVerify: ""
+        codeVerify: "",
       },
       loginRules: {
         acct: [{ required: true, message: "请输入用户名", trigger: "blur" }],
         pwd: [{ required: true, message: "请输入密码", trigger: "blur" }],
         codeVerify: [
-          { required: true, message: "请输入验证码", trigger: "blur" }
-        ]
+          { required: true, message: "请输入验证码", trigger: "blur" },
+        ],
       },
       loading: false,
       imgCode: "",
       imgUid: "",
-      checked: false
+      checked: false,
     };
   },
   methods: {
@@ -127,26 +134,34 @@ export default {
     },
     async getCodeImg() {
       let result = await login.getCodeImage();
+      console.log(result);
       if (result && result.code == 0) {
         this.imgCode = result.data.imgCode;
         this.imgUid = result.data.imgUid;
-      } else if(result.code){
+      } else if (result.code) {
         this.$message({
           type: "error",
-          message: `验证码获取失败！${result.message}`
+          message: `验证码获取失败！${result.message}`,
         });
         this.imgCode = "";
         this.imgUid = "";
       }
     },
+    async getUserInfo() {
+      let data = await user.getUserInfo();
+      if (data && data.code == 0) {
+        this.account = data.data.userAccount.account;
+        this.changeUserInfo(data.data);
+      }
+    },
     handleLogin() {
-      this.$refs.loginForm.validate(async valid => {
+      this.$refs.loginForm.validate(async (valid) => {
         if (valid) {
           let params = {
             pwd: this.loginForm.pwd,
             acct: this.loginForm.acct,
             imgCode: this.loginForm.codeVerify,
-            imgUid: this.imgUid
+            imgUid: this.imgUid,
           };
 
           this.loading = true;
@@ -155,7 +170,7 @@ export default {
           if (result && result.code == 0) {
             this.$message({
               type: "success",
-              message: "登录成功！"
+              message: "登录成功！",
             });
             // if (this.checked) {
             //   setCookie("acct", this.loginForm.acct, 7);
@@ -169,7 +184,7 @@ export default {
           } else {
             this.$message({
               type: "error",
-              message: result.message
+              message: result.message,
             });
             this.loginForm.codeVerify = "";
             this.getCodeImg();
@@ -177,16 +192,17 @@ export default {
         } else {
           this.$message({
             type: "error",
-            message: "请输入正确帐号、密码与验证码"
+            message: "请输入正确帐号、密码与验证码",
           });
           return false;
         }
       });
-    }
+    },
   },
   mounted() {
     this.getCodeImg();
-  }
+    this.getUserInfo()
+  },
 };
 </script>
 

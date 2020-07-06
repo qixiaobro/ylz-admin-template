@@ -1,10 +1,10 @@
 /*
  * @Author       : zhuxiaodong
  * @Date         : 2020-06-01 18:22:57
- * @LastEditTime : 2020-06-02 17:03:54
+ * @LastEditTime : 2020-07-06 14:53:57
  * @LastEditors  : zhuxiaodong
  * @Description  : vue.config.js
- * @FilePath     : /ylz-admin-template/vue.config.js
+ * @FilePath     : /easy-mock-demo/vue.config.js
  */ 
 const path = require("path")
 const CompressionWebpackPlugin = require("compression-webpack-plugin")
@@ -28,13 +28,18 @@ module.exports = {
     disableHostCheck: true,
     proxy: { //配置跨域
       "/api": {
-        target: "http://fuwu-test.nhsa.gov.cn/ebus/fuwu/api/oplt",
+        target: "http://localhost:8090",
         secure: false,
         changOrigin: true,
         // pathRewrite: {
         //   "^/hsa-pss-oplt-nation": ""
         // }
-      }
+      },
+      // "/api":{
+      //   target:"http://fuwu-test.nhsa.gov.cn/ebus/fuwu/api/oplt",
+      //   secure: false,
+      //   changOrigin: true,
+      // }
     }
   },
 
