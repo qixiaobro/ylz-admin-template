@@ -26,6 +26,7 @@ vue.config.js  //项目打包配置等
 ├─store        //vuex仓库
 ├─router       //路由文件
 ├─components   //组件
+├─mocks        //mock服务
 ├─assets       //静态资源
 ├─apis         //接口模块
 ```
@@ -104,7 +105,7 @@ store开启了命名空间，所以在页面分发时要带上模块名
 
 ### ```views```
 
-```views```包含·所有页面文件，不同模块页面放不同文件夹
+```views```包含所有页面文件，不同模块页面放不同文件夹
 
 ```javascript
 ├─views
@@ -112,6 +113,18 @@ store开启了命名空间，所以在页面分发时要带上模块名
 |   |      └login.vue
 |   ├─default-module        //默认页面
 |   |       └default-404.vue
+```
+
+### ```mocks```
+
+```mocks```本地mock-node服务
+
+```javascript
+├─mocks
+|   ├─modules          //路由模块
+|   |      └login.js
+|   |      └user.js
+|   ├─index.js        //node服务主文件
 ```
 
 ### ```utils```
