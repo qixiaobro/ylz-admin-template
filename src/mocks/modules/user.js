@@ -1,7 +1,7 @@
 /*
  * @Author       : zhuxiaodong
  * @Date         : 2020-07-06 14:10:23
- * @LastEditTime : 2020-07-06 15:19:11
+ * @LastEditTime : 2020-07-06 16:40:13
  * @LastEditors  : zhuxiaodong
  * @Description  : user mock
  * @FilePath     : /easy-mock-demo/src/mocks/modules/user.js
@@ -23,5 +23,6 @@ app.post('/userInfo', (req, res) => {
   "type": "success"
  }))
 })
+
 
 module.exports = app
